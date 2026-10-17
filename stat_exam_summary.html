@@ -1,0 +1,586 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>สรุปเตรียมสอบ SC602005 บท 5–7</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Mali:wght@400;600;700&family=Prompt:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#fff8f1; --ink:#3b3350; --muted:#7a7391;
+  --pink:#ffd6e4; --pink-d:#e8618c;
+  --blue:#d6e8ff; --blue-d:#3b82c4;
+  --mint:#d5f5e3; --mint-d:#2e9e6b;
+  --yellow:#fff1b8; --yellow-d:#c58b00;
+  --lav:#e6dcff; --lav-d:#7a5cd1;
+  --peach:#ffe0cc; --peach-d:#d9692a;
+  --card:#ffffff; --line:#eadff5;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Prompt','Mali',system-ui,sans-serif;line-height:1.75;font-size:16px}
+.wrap{max-width:980px;margin:0 auto;padding:0 18px 60px}
+header.hero{background:linear-gradient(135deg,var(--pink),var(--lav) 55%,var(--blue));padding:46px 18px 40px;text-align:center;border-bottom-left-radius:40px;border-bottom-right-radius:40px;box-shadow:0 8px 24px #b9a3e633}
+.hero h1{font-family:'Mali','Prompt',sans-serif;font-size:clamp(26px,5vw,40px);margin:6px 0;color:#4b2f7a}
+.hero p{margin:4px 0;color:#5d4f80}
+.badge{display:inline-block;background:#fff;border-radius:999px;padding:3px 14px;font-size:14px;margin:4px 3px;color:var(--lav-d);box-shadow:0 2px 6px #0001}
+nav{position:sticky;top:0;z-index:20;background:#fff8f1ee;backdrop-filter:blur(6px);padding:10px 8px;border-bottom:2px dashed var(--line)}
+nav .in{max-width:980px;margin:0 auto;display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+nav a{text-decoration:none;color:var(--ink);background:#fff;border:2px solid var(--line);padding:5px 14px;border-radius:999px;font-size:14px;transition:.15s}
+nav a:hover{transform:translateY(-2px);border-color:var(--pink-d);color:var(--pink-d)}
+section{margin-top:38px;scroll-margin-top:70px}
+h2{font-family:'Mali','Prompt',sans-serif;font-size:28px;margin:0 0 14px;padding:10px 18px;border-radius:18px;display:inline-block}
+.s0 h2{background:var(--yellow)} .s1 h2{background:var(--pink)} .s2 h2{background:var(--mint)}
+.s3 h2{background:var(--blue)} .s4 h2{background:var(--lav)} .s5 h2{background:var(--peach)} .s6 h2{background:var(--yellow)}
+h3{font-family:'Mali','Prompt',sans-serif;font-size:20px;margin:22px 0 8px;color:#4b2f7a}
+h4{margin:14px 0 4px;color:var(--lav-d)}
+.card{background:var(--card);border:2px solid var(--line);border-radius:22px;padding:18px 20px;margin:14px 0;box-shadow:0 4px 14px #b9a3e61f}
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.grid .card{margin:0}
+.def,.formula,.tip,.warn,.ex{border-radius:16px;padding:12px 16px;margin:10px 0;border-left:7px solid}
+.def{background:var(--blue);border-color:var(--blue-d)}
+.formula{background:var(--lav);border-color:var(--lav-d);font-family:'Prompt',sans-serif}
+.tip{background:var(--mint);border-color:var(--mint-d)}
+.warn{background:var(--yellow);border-color:var(--yellow-d)}
+.ex{background:var(--peach);border-color:var(--peach-d)}
+.tag{display:inline-block;font-size:12px;font-weight:600;padding:1px 10px;border-radius:999px;background:#fff;margin-right:6px;letter-spacing:.3px}
+table{width:100%;border-collapse:separate;border-spacing:0;margin:10px 0;font-size:15px;background:#fff;border-radius:14px;overflow:hidden;border:2px solid var(--line)}
+th{background:var(--lav);color:#3d2a70;padding:9px 10px;text-align:left}
+td{padding:8px 10px;border-top:1px solid var(--line);vertical-align:top}
+tr:nth-child(even) td{background:#fcf9ff}
+.scroll{overflow-x:auto}
+ul,ol{padding-left:22px;margin:6px 0}
+li{margin:3px 0}
+code,.k{background:#f3ecff;padding:1px 7px;border-radius:8px;font-family:'Prompt',monospace;font-size:.95em;color:#5a3ea8}
+.steps{counter-reset:s;list-style:none;padding:0}
+.steps li{counter-increment:s;position:relative;padding:6px 6px 6px 46px;margin:6px 0}
+.steps li::before{content:counter(s);position:absolute;left:4px;top:4px;width:32px;height:32px;border-radius:50%;background:var(--pink-d);color:#fff;display:grid;place-items:center;font-weight:600}
+details{background:#fff;border:2px dashed var(--line);border-radius:16px;padding:8px 16px;margin:10px 0}
+details[open]{border-style:solid;border-color:var(--lav)}
+summary{cursor:pointer;font-weight:600;color:var(--lav-d)}
+.pill-yes{color:var(--mint-d);font-weight:600} .pill-no{color:var(--pink-d);font-weight:600}
+footer{text-align:center;color:var(--muted);margin-top:50px;font-size:14px}
+sub,sup{line-height:0}
+@media print{nav{display:none} body{background:#fff} .card,details{break-inside:avoid}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div style="font-size:42px">📚✨🧮</div>
+  <h1>สรุปเตรียมสอบ Probability &amp; Statistics</h1>
+  <p>SC602005 · บทที่ 5 – 7 · อ.ดร.ธนวรรณ ประฮาดไชย (ภาควิชาสถิติ มข.)</p>
+  <span class="badge">ANOVA</span><span class="badge">ไคกำลังสอง</span><span class="badge">Nonparametric</span><span class="badge">สหสัมพันธ์</span><span class="badge">การถดถอย</span><span class="badge">อ่าน SPSS</span>
+</header>
+
+<nav><div class="in">
+  <a href="#s0">🌱 พื้นฐาน</a>
+  <a href="#s1">🍓 ANOVA</a>
+  <a href="#s2">🍃 ไคกำลังสอง</a>
+  <a href="#s3">🫐 บท 6</a>
+  <a href="#s4">💜 บท 7</a>
+  <a href="#s5">🍑 อ่าน SPSS</a>
+  <a href="#s6">🌼 เลือกสถิติ</a>
+</div></nav>
+
+<div class="wrap">
+
+<!-- ================= S0 ================= -->
+<section id="s0" class="s0">
+<h2>🌱 พื้นฐาน: ขั้นตอนทดสอบสมมติฐาน (ใช้ทุกบท)</h2>
+<div class="card">
+<ol class="steps">
+  <li><b>ตั้ง H₀, H₁</b> – H₀ = สมมติฐานหลัก (ไม่แตกต่าง / ไม่สัมพันธ์ / เท่ากัน), H₁ = สมมติฐานแย้ง (ซึ่งแบ่งเป็นทางเดียว &lt; &gt; หรือสองทาง ≠)</li>
+  <li><b>กำหนดระดับนัยสำคัญ α</b> – ปกติ α = 0.05 (คือความน่าจะเป็นที่ยอมให้เกิด Type I error)</li>
+  <li><b>เลือกสถิติทดสอบ</b> – ให้สอดคล้องกับสมมติฐาน + ตรวจข้อตกลงเบื้องต้นก่อน (เช่น ปกติ? ความแปรปรวนเท่า?)</li>
+  <li><b>คำนวณค่าสถิติ &amp; หา p-value</b> – (SPSS ดูช่อง <code>Sig.</code>)</li>
+  <li><b>ตัดสินใจ &amp; สรุปผล</b> – <span class="k">ปฏิเสธ H₀ ถ้า p-value ≤ α</span> แล้วเขียนสรุปเป็นภาษาเนื้อหา</li>
+</ol>
+</div>
+
+<div class="grid">
+<div class="card">
+  <h4>⚖️ ความผิดพลาด 2 แบบ</h4>
+  <table>
+    <tr><th>ตัดสินใจ</th><th>H₀ จริง</th><th>H₀ เท็จ</th></tr>
+    <tr><td>ปฏิเสธ H₀</td><td>Type I (α)</td><td>ถูกต้อง (1−β) = <b>อำนาจการทดสอบ</b></td></tr>
+    <tr><td>ยอมรับ H₀</td><td>ถูกต้อง (1−α)</td><td>Type II (β)</td></tr>
+  </table>
+  <div class="tip"><b>จำง่าย:</b> Type I = ตัดสินว่าผิดทั้งที่บริสุทธิ์ (ปฏิเสธ H₀ ที่จริง) · Type II = ปล่อยคนผิดหลุด (ไม่ปฏิเสธ H₀ ที่เท็จ)</div>
+</div>
+<div class="card">
+  <h4>🔍 p-value คืออะไร</h4>
+  <div class="def">ค่านัยสำคัญที่น้อยที่สุดที่ทำให้ปฏิเสธ H₀ หรือความน่าจะเป็นที่จะปฏิเสธ H₀ เมื่อ H₀ เป็นจริง</div>
+  <div class="warn">ทดสอบ<b>ทางเดียว</b>: p-value แบบสองทางต้อง<b>หารครึ่ง</b> เพื่อดูเฉพาะด้านที่สนใจ</div>
+</div>
+</div>
+
+<div class="card">
+<h4>✅ เช็กข้อตกลงเบื้องต้นด้วยอะไร</h4>
+<table>
+<tr><th>เรื่องที่เช็ก</th><th>สถิติทดสอบ</th><th>H₀</th><th>ผ่านเมื่อ</th></tr>
+<tr><td>การแจกแจงปกติ</td><td>Shapiro-Wilk (n ≤ 50)<br>Kolmogorov-Smirnov (n &gt; 50)</td><td>ข้อมูลมีการแจกแจงปกติ</td><td>p &gt; α (ยอมรับ H₀)</td></tr>
+<tr><td>ความแปรปรวนเท่ากัน</td><td>Levene's test</td><td>ทุกกลุ่มมีความแปรปรวนเท่ากัน</td><td>p &gt; α (ยอมรับ H₀)</td></tr>
+</table>
+<div class="tip">ถ้า<b>ไม่ปกติ</b> → ไปใช้วิธีไม่ใช้พารามิเตอร์ (บท 6)</div>
+</div>
+</section>
+
+<!-- ================= S1 ================= -->
+<section id="s1" class="s1">
+<h2>🍓 บทที่ 5.4 การวิเคราะห์ความแปรปรวน (One-way ANOVA)</h2>
+
+<h3>5.4.1 One-way ANOVA ใช้ทดสอบอะไร?</h3>
+<div class="card">
+<div class="def"><b>ใช้ทดสอบ</b>ค่าเฉลี่ยของประชากร <b>มากกว่า 2 กลุ่ม</b> ที่<b>เป็นอิสระกัน</b> ว่าแตกต่างกันหรือไม่ โดยมีตัวแปรตามเป็น<b>เชิงปริมาณ</b> ตัวแปรอิสระ (กลุ่ม/ปัจจัย) เป็น<b>เชิงจำแนก</b> 1 ตัว</div>
+<div class="formula">
+H₀: μ₁ = μ₂ = μ₃ = … = μ<sub>k</sub><br>
+H₁: มี μ<sub>i</sub> อย่างน้อย 2 ค่าที่ไม่เท่ากัน<br><br>
+สถิติทดสอบ: <b>F = MSTr / MSE ~ F(k−1, n−k)</b> &nbsp;|&nbsp; ปฏิเสธ H₀ ถ้า p ≤ α หรือ F ≥ f<sub>α,(k−1,n−k)</sub>
+</div>
+
+<h4>ตาราง ANOVA</h4>
+<div class="scroll"><table>
+<tr><th>แหล่งความผันแปร</th><th>df</th><th>SS</th><th>MS</th><th>F</th></tr>
+<tr><td>ระหว่างกลุ่ม / สิ่งทดลอง (Treatment)</td><td>k − 1</td><td>SSTr</td><td>MSTr = SSTr/(k−1)</td><td>MSTr/MSE</td></tr>
+<tr><td>ภายในกลุ่ม / ความคลาดเคลื่อน (Error)</td><td>n − k</td><td>SSE</td><td>MSE = SSE/(n−k)</td><td></td></tr>
+<tr><td>รวม (Total)</td><td>n − 1</td><td>SST</td><td></td><td></td></tr>
+</table></div>
+<div class="formula">SST = SSTr + SSE<br>
+SST = ΣΣX²<sub>ij</sub> − (ΣΣX<sub>ij</sub>)²/n &nbsp;·&nbsp; SSTr = Σ(X²<sub>i.</sub>/n<sub>i</sub>) − (ΣΣX<sub>ij</sub>)²/n &nbsp;·&nbsp; SSE = SST − SSTr</div>
+
+<h4>ข้อตกลงเบื้องต้น</h4>
+<ul>
+<li>ตัวอย่างแต่ละกลุ่ม<b>สุ่มมาอย่างอิสระ</b></li>
+<li>แต่ละกลุ่มมาจากประชากรที่<b>แจกแจงปกติ</b> (เช็กด้วย Shapiro-Wilk / K-S)</li>
+<li>ประชากรทุกกลุ่ม<b>ความแปรปรวนเท่ากัน</b> (เช็กด้วย Levene)</li>
+</ul>
+</div>
+
+<h3>ต่างจาก t-test ยังไง?</h3>
+<div class="card scroll">
+<table>
+<tr><th>ประเด็น</th><th>t-test</th><th>One-way ANOVA</th></tr>
+<tr><td>จำนวนกลุ่ม</td><td>1 หรือ 2 กลุ่ม</td><td>มากกว่า 2 กลุ่ม (k ≥ 3)</td></tr>
+<tr><td>สถิติทดสอบ</td><td>t</td><td>F</td></tr>
+<tr><td>เปรียบเทียบอะไร</td><td>ค่าเฉลี่ย 1 ค่า vs ค่าที่กำหนด / 2 ค่า</td><td>ค่าเฉลี่ย k ค่าพร้อมกัน (ผ่านการเปรียบเทียบความแปรปรวนระหว่างกลุ่ม vs ภายในกลุ่ม)</td></tr>
+<tr><td>บอกคู่ที่ต่างไหม</td><td>บอกเลย (มี 2 กลุ่ม)</td><td><b>ไม่บอก</b> ต้องทำ multiple comparison ต่อ</td></tr>
+</table>
+<div class="tip"><b>ทำไมไม่ใช้ t-test ซ้ำหลายคู่?</b> เพราะการทดสอบหลายครั้งทำให้โอกาสเกิด Type I error รวมสูงเกิน α (หลักสถิติทั่วไป) ANOVA ทดสอบครั้งเดียวทุกกลุ่ม · ถ้า 2 กลุ่ม ANOVA ให้ผลเทียบเท่า independent t-test (F = t²)</div>
+</div>
+
+<h3>5.4.2 การเปรียบเทียบพหุคูณ (Multiple Comparison) – หาคู่ที่แตกต่าง</h3>
+<div class="card">
+<div class="warn"><b>ทำเมื่อไร?</b> ทำ<b>หลัง</b> ANOVA <b>ปฏิเสธ H₀</b> เท่านั้น (ถ้ายอมรับ H₀ ก็จบ ไม่ต้องหาคู่)<br>
+สมมติฐานของแต่ละคู่: H₀: μ<sub>i</sub> = μ<sub>j</sub> &nbsp; H₁: μ<sub>i</sub> ≠ μ<sub>j</sub> &nbsp; → ดู Sig. ของคู่นั้น ปฏิเสธถ้า p ≤ α</div>
+<table>
+<tr><th>วิธี</th><th>ลักษณะ / เงื่อนไขใช้</th></tr>
+<tr><td><b>LSD</b> (Least Significant Difference)</td><td>เปรียบเทียบค่าเฉลี่ยได้ครั้งละหลายคู่ (คำนวณมือง่าย)</td></tr>
+<tr><td><b>Tukey's HSD</b></td><td>ตัวอย่างแต่ละกลุ่มมีขนาด<b>เท่ากัน</b></td></tr>
+<tr><td><b>Scheffé</b></td><td>ขนาดตัวอย่างแต่ละกลุ่ม<b>เท่ากันหรือไม่เท่ากันก็ได้</b></td></tr>
+<tr><td><b>Bonferroni</b></td><td>จำนวนกลุ่ม<b>ไม่เกิน 5 กลุ่ม</b></td></tr>
+</table>
+<h4>วิธี LSD (คิดมือ)</h4>
+<ol class="steps">
+<li>คำนวณ <span class="k">LSD = t<sub>α/2, ν</sub> · √[ MSE (1/n<sub>i</sub> + 1/n<sub>j</sub>) ]</span> เมื่อ ν = n − k และ MSE ได้จากตาราง ANOVA</li>
+<li>หาผลต่างของค่าเฉลี่ยทุกคู่ |X̄<sub>i</sub> − X̄<sub>j</sub>|</li>
+<li>ถ้า <b>|X̄<sub>i</sub> − X̄<sub>j</sub>| ≥ LSD</b> → คู่นั้นแตกต่างอย่างมีนัยสำคัญ ; ถ้า &lt; LSD → ไม่แตกต่าง</li>
+</ol>
+<details><summary>📌 ตัวอย่างสูตรอาหารสุกร 4 สูตร (คลิกดู)</summary>
+n = 20 (กลุ่มละ 5), k = 4 · SSTr = 1,699.41, SSE = 462.04, SST = 2,161.45<br>
+MSTr = 566.47 · MSE = 28.88 · <b>F = 19.61</b> · df = (3, 16) · p ≈ 0.0000312 &lt; 0.05 → <b>ปฏิเสธ H₀</b><br>
+→ มีอย่างน้อย 2 สูตรที่ประสิทธิภาพต่างกัน จึงทำ LSD: <b>LSD = 7.21</b><br>
+ค่าเฉลี่ย: สูตร1 = 137.16, สูตร2 = 150.72, สูตร3 = 162.02, สูตร4 = 143.64
+<table>
+<tr><th>คู่</th><th>|ผลต่าง|</th><th>ผล</th></tr>
+<tr><td>1 กับ 2</td><td>13.56 &gt; 7.21</td><td class="pill-no">มีนัยสำคัญ</td></tr>
+<tr><td>1 กับ 3</td><td>24.86 &gt; 7.21</td><td class="pill-no">มีนัยสำคัญ</td></tr>
+<tr><td>1 กับ 4</td><td>6.48 &lt; 7.21</td><td class="pill-yes">ไม่มีนัยสำคัญ</td></tr>
+<tr><td>2 กับ 3</td><td>11.30 &gt; 7.21</td><td class="pill-no">มีนัยสำคัญ</td></tr>
+<tr><td>2 กับ 4</td><td>7.08 &lt; 7.21</td><td class="pill-yes">ไม่มีนัยสำคัญ</td></tr>
+<tr><td>3 กับ 4</td><td>18.38 &gt; 7.21</td><td class="pill-no">มีนัยสำคัญ</td></tr>
+</table>
+</details>
+<details><summary>📌 ตัวอย่าง SPSS: คะแนนความเครียดแยกชั้นปี (Scheffé)</summary>
+ANOVA: F = 12.057, df = (3, 146), Sig. &lt; .001 → ปฏิเสธ H₀ (ชั้นปีต่างกันอย่างน้อย 1 คู่)<br>
+Scheffé: ปี 1 vs ปี 2 Sig. = .978 &gt; .05 → <b>ไม่ต่างกัน</b><br>
+ค่าเฉลี่ย: ปี2 = 20.13, ปี1 = 20.93 (กลุ่ม a) | ปี4 = 27.79, ปี3 = 29.45 (กลุ่ม c) → ปี 1,2 ไม่ต่างกัน; ปี 3,4 ไม่ต่างกัน; แต่ 2 กลุ่มนี้ต่างกัน
+</details>
+</div>
+</section>
+
+<!-- ================= S2 ================= -->
+<section id="s2" class="s2">
+<h2>🍃 บทที่ 5.5 ไคกำลังสอง (วิเคราะห์ข้อมูลเชิงจำแนก)</h2>
+<div class="card">
+<div class="def"><b>ข้อมูลเชิงจำแนก</b> = ข้อมูลเชิงคุณภาพ (นามบัญญัติ / เรียงลำดับ) ที่นำมานับเป็น<b>ความถี่ (count data)</b><br>
+ใช้สถิติ <b>χ² = Σ (O − E)² / E</b> &nbsp;( O = ความถี่ที่สังเกตได้, E = ความถี่ที่คาดหวัง )<br>
+ปฏิเสธ H₀ ถ้า χ² ≥ χ²<sub>α,ν</sub> หรือ p ≤ α</div>
+</div>
+
+<h3>⭐ ความแตกต่างของ 3 การทดสอบ (ข้อสอบชอบถาม!)</h3>
+<div class="card scroll">
+<table>
+<tr><th></th><th>Goodness of fit<br>(ความกลมกลืน)</th><th>Independence<br>(ความเป็นอิสระ)</th><th>Homogeneity<br>(ความคล้ายคลึง)</th></tr>
+<tr><td><b>คำถามหลัก</b></td><td>ข้อมูลเป็นไปตามการแจกแจง / สัดส่วนที่คาดไว้ไหม?</td><td>ตัวแปรเชิงคุณภาพ 2 ตัว <b>สัมพันธ์</b>กันไหม?</td><td>หลายประชากร มี<b>สัดส่วนของแต่ละคุณลักษณะ</b>ต่างกันไหม?</td></tr>
+<tr><td><b>กลุ่มตัวอย่าง</b></td><td>1 กลุ่ม</td><td>1 กลุ่ม วัด 2 ตัวแปรพร้อมกัน</td><td>≥ 2 ประชากร<b>อิสระกัน</b> (สุ่มจากแต่ละประชากร)</td></tr>
+<tr><td><b>จำนวนตัวแปรเชิงคุณภาพ</b></td><td>1 ตัว (แบ่ง ≥ 2 คุณลักษณะ)</td><td>2 ตัว</td><td>1 ตัว (ในแต่ละประชากร)</td></tr>
+<tr><td><b>H₀</b></td><td>ประชากรมีการแจกแจง … (ระบุ เช่น ปัวซอง)</td><td>ตัวแปร A และ B <b>เป็นอิสระต่อกัน</b> (ไม่มีความสัมพันธ์)</td><td>p₁ = p₂ = … (สัดส่วนเท่ากันทุกประชากร)</td></tr>
+<tr><td><b>H₁</b></td><td>ประชากรมิได้มีการแจกแจง …</td><td>ไม่เป็นอิสระต่อกัน (มีความสัมพันธ์)</td><td>มีสัดส่วนอย่างน้อย 2 ค่าไม่เท่ากัน</td></tr>
+<tr><td><b>E</b></td><td>E<sub>i</sub> = n·p<sub>i</sub></td><td>E<sub>ij</sub> = (O<sub>i.</sub>)(O<sub>.j</sub>) / n</td><td>E<sub>ij</sub> = (O<sub>i.</sub>)(O<sub>.j</sub>) / n</td></tr>
+<tr><td><b>df</b></td><td>k − 1 − m<br>(m = จำนวนพารามิเตอร์ที่ต้องประมาณ)</td><td>(r − 1)(c − 1)</td><td>(r − 1)(c − 1)</td></tr>
+</table>
+<div class="tip"><b>สรุปใจความ:</b> สูตรคำนวณ Independence กับ Homogeneity <b>เหมือนกัน</b> ต่างกันที่ <u>วิธีเก็บข้อมูล/คำถามวิจัย</u> – Independence: สุ่มมากลุ่มเดียวแล้วดู 2 ตัวแปรสัมพันธ์กันไหม; Homogeneity: สุ่มแยกจากหลายประชากรแล้วเทียบสัดส่วน · ส่วน Goodness of fit เทียบกับการแจกแจงที่ตั้งไว้ (ใช้ 1 ตัวแปร)</div>
+</div>
+
+<h3>กฎเรื่อง Expected count (ยุบเซลล์)</h3>
+<div class="card">
+<ul>
+<li>ถ้า E<sub>ij</sub> &lt; 1 → ยุบเซลล์กับเซลล์ข้างเคียงจน E ≥ 1 (และรวม O ด้วย)</li>
+<li>เมื่อ 1 ≤ E ≤ 5 → นับเป็นร้อยละของเซลล์ทั้งหมด: &gt; 20% ให้ยุบเซลล์ต่อ ; ≤ 20% ใช้ <b>Pearson Chi-Square</b></li>
+<li>ถ้ายุบจนเป็นตาราง <b>2×2</b>: 5 ≤ E ≤ 10 บางเซลล์ → ใช้ <b>Yates' correction</b> χ² = ΣΣ(|O−E|−0.5)²/E ; E &gt; 10 ทุกเซลล์ → ใช้สูตรปกติ ; E &lt; 5 บางเซลล์ → ใช้ <b>Fisher's Exact Test</b></li>
+<li>ใน SPSS ดูท้ายตาราง Chi-Square Tests: “…cells have expected count less than 5” ต้อง<b>ไม่เกิน 20%</b></li>
+</ul>
+</div>
+
+<div class="grid">
+<div class="card">
+<h4>① Goodness of fit – ตัวอย่างปัวซอง</h4>
+ผู้ซื้อประกัน 200 คน นับครั้งที่เบิกค่ารักษา (0–7+ ครั้ง) · H₀: มีการแจกแจงปัวซอง<br>
+ไม่ทราบ λ → ประมาณด้วย X̄ = <b>2.05</b> (m = 1)<br>
+เซลล์ท้าย (6 และ ≥7) E เล็กเกินไป → <b>ยุบเซลล์</b> เหลือ 7 เซลล์ → df = 7 − 1 − 1 = <b>5</b><br>
+χ² = 2.118 · p = 0.8326 &gt; 0.05 → <b>ยอมรับ H₀</b> เบิกค่ารักษามีการแจกแจงปัวซอง
+</div>
+<div class="card">
+<h4>② Independence – เพศ × ระดับความเครียด</h4>
+H₀: เพศและระดับความเครียดไม่มีความสัมพันธ์ (3 ระดับ: ต่ำ 0–20, กลาง 21–31, สูง 32–40)<br>
+SPSS: Pearson χ² = 2.309 · df = 2 · Sig. = .315 · (1 cell = 16.7% มี E &lt; 5 ✔ ไม่เกิน 20%)<br>
+p = 0.315 &gt; 0.05 → <b>ยอมรับ H₀</b> → เพศกับระดับความเครียด<b>ไม่มีความสัมพันธ์</b> (p &gt; 0.05)
+</div>
+<div class="card">
+<h4>③ Homogeneity – คุณภาพสินค้า 3 ผลัด</h4>
+สุ่มสินค้าผลัดเช้า/บ่าย/ดึก 950/945/940 ชิ้น · H₀: p₁ = p₂ = p₃ (สัดส่วนสินค้าดีเท่ากัน)<br>
+χ² = 6.23 · df = (3−1)(2−1) = 2 · p = 0.0443 &lt; 0.05 → <b>ปฏิเสธ H₀</b><br>
+สัดส่วนสินค้าดีของ 3 ผลัด<b>แตกต่างกัน</b> ที่ระดับ 0.05
+</div>
+</div>
+
+<div class="card">
+<h4>🔧 ขั้นตอนทำ Independence / Homogeneity (คิดมือ)</h4>
+<ol class="steps">
+<li>ตั้ง H₀/H₁ ตามชนิดของการทดสอบ ; กำหนด α</li>
+<li>หา E<sub>ij</sub> = (ผลรวมแถว × ผลรวมคอลัมน์) / n ทุกเซลล์ แล้วเช็กเงื่อนไข E (ยุบเซลล์ถ้าจำเป็น)</li>
+<li>คำนวณ χ² = ΣΣ (O−E)²/E ; df = (r−1)(c−1) (หลังยุบเซลล์ ใช้ r, c ใหม่)</li>
+<li>เทียบ χ² กับ χ²<sub>α,df</sub> หรือหา p-value (Excel: <code>=CHIDIST(χ², df)</code>)</li>
+<li>สรุปผลเป็นภาษาเนื้อหา</li>
+</ol>
+<div class="tip">SPSS: <code>Analyze → Descriptive Statistics → Crosstabs</code> · Statistics ติ๊ก <b>Chi-square</b> · Cells ติ๊ก <b>Observed, Expected</b></div>
+</div>
+</section>
+
+<!-- ================= S3 ================= -->
+<section id="s3" class="s3">
+<h2>🫐 บทที่ 6 การทดสอบแบบไม่ใช้พารามิเตอร์ (4 วิธี)</h2>
+
+<h3>non-parametric vs parametric ต่างกันอย่างไร?</h3>
+<div class="card scroll">
+<table>
+<tr><th></th><th>Parametric (ใช้พารามิเตอร์)</th><th>Nonparametric (ไม่ใช้พารามิเตอร์)</th></tr>
+<tr><td>ข้อตกลงเบื้องต้น</td><td>ต้องการ เช่น ปกติ / ความแปรปรวนเท่ากัน</td><td>ไม่ต้องการการแจกแจงปกติ</td></tr>
+<tr><td>มาตรวัดข้อมูล</td><td>เชิงปริมาณ (อันตรภาค/อัตราส่วน)</td><td>ใช้ได้ตั้งแต่มาตรเรียงอันดับขึ้นไป (บางวิธีใช้กับนามบัญญัติ)</td></tr>
+<tr><td>ใช้อะไรคำนวณ</td><td>ค่าจริงของข้อมูล (ค่าเฉลี่ย)</td><td>ใช้ <b>อันดับ (Rank)</b> ของข้อมูล เปรียบเทียบ<b>มัธยฐาน</b></td></tr>
+<tr><td>ขนาดตัวอย่าง</td><td>ควรไม่เล็กเกินไป</td><td>ตัวอย่างเล็กก็ทดสอบได้</td></tr>
+<tr><td>การคำนวณ</td><td>ซับซ้อนกว่า</td><td>ง่ายกว่า</td></tr>
+<tr><td>อำนาจการทดสอบ</td><td><b>สูงกว่า</b></td><td><b>น้อยกว่า</b> (ใช้อันดับทำให้สูญเสียข้อมูลบางส่วน)</td></tr>
+</table>
+<div class="tip"><b>ใช้เมื่อไร:</b> เมื่อข้อมูลไม่เป็นไปตามข้อตกลงเบื้องต้น เช่น ไม่ปกติ (ผล Shapiro-Wilk p &lt; 0.05), ข้อมูลเป็นอันดับ/ความถี่, หรือตัวอย่างเล็กเกินไป</div>
+</div>
+
+<h3>ตารางจับคู่: nonparametric ↔ parametric</h3>
+<div class="card scroll">
+<table>
+<tr><th>วิธี nonparametric</th><th>ใช้แทน</th><th>ใช้เมื่อ</th><th>สมมติฐาน (M = มัธยฐาน)</th></tr>
+<tr><td>One-Sample Wilcoxon Signed Rank</td><td>One-sample t-test</td><td>1 กลุ่ม เทียบกับค่า M₀</td><td>H₀: M = M₀ ; H₁: M ≠ / &gt; / &lt; M₀</td></tr>
+<tr><td>Mann–Whitney U</td><td>Independent t-test</td><td>2 กลุ่ม<b>อิสระกัน</b></td><td>H₀: M₁ = M₂ ; H₁: M₁ ≠ / &gt; / &lt; M₂</td></tr>
+<tr><td>Wilcoxon Matched-Pair Signed-Rank</td><td>Paired t-test</td><td>2 กลุ่ม<b>ไม่อิสระ (จับคู่ / ก่อน-หลัง)</b></td><td>H₀: M<sub>before</sub> = M<sub>after</sub></td></tr>
+<tr><td>Kruskal–Wallis</td><td>One-way ANOVA</td><td>k ≥ 3 กลุ่ม<b>อิสระกัน</b></td><td>H₀: M₁ = M₂ = … = M<sub>k</sub> ; H₁: อย่างน้อย 2 ค่าไม่เท่ากัน</td></tr>
+</table>
+<div class="warn">ข้อตกลงของทุกวิธี: มาตรวัดข้อมูล<b>อย่างน้อยเป็นมาตรเรียงอันดับ</b> · Mann–Whitney และ Kruskal–Wallis ต้องการกลุ่มตัวอย่าง<b>เป็นอิสระกัน</b> · Wilcoxon Matched-Pair ต้องการกลุ่มที่<b>ไม่เป็นอิสระกัน</b></div>
+</div>
+
+<h3>1) One-Sample Wilcoxon Signed Rank Test</h3>
+<div class="card">
+<ol class="steps">
+<li>H₀: M = M₀ ; H₁: M ≠ M₀ (หรือ &gt; , &lt;) ; กำหนด α</li>
+<li>คำนวณ <b>D<sub>i</sub> = X<sub>i</sub> − M₀</b> ; <b>ตัดค่า D<sub>i</sub> = 0 ทิ้ง</b> (n นับเฉพาะที่ไม่ใช่ 0)</li>
+<li>จัดอันดับ <b>|D<sub>i</sub>|</b> จากน้อยไปมาก (ค่าเท่ากันใช้อันดับเฉลี่ย) แล้วใส่เครื่องหมายตาม D<sub>i</sub></li>
+<li>T⁺ = ผลรวมอันดับที่เป็น +, T⁻ = ผลรวมอันดับที่เป็น −</li>
+<li>สถิติ: สองทาง <b>T = min(T⁻, T⁺)</b> ; H₁: M &gt; M₀ ใช้ T⁻ ; H₁: M &lt; M₀ ใช้ T⁺</li>
+<li>ปฏิเสธ H₀ ถ้า <b>T ≤ T<sub>วิกฤต</sub></b> (ตาราง Wilcoxon, n ≤ 30) หรือ p ≤ α</li>
+</ol>
+<div class="formula">n &gt; 30 ใช้ประมาณปกติ: Z = (T − μ<sub>T</sub>)/σ<sub>T</sub> เมื่อ μ<sub>T</sub> = n(n+1)/4 , σ²<sub>T</sub> = n(n+1)(2n+1)/24 (ถ้ามีค่าซ้ำต้องปรับความแปรปรวน)</div>
+<details><summary>📌 ตัวอย่างท่อเหล็ก (H₀: M = 10 นิ้ว)</summary>
+ข้อมูล: 9, 10, 11, 9, 10, 9, 9, 9, 8, 9 → D = −1, 0, +1, −1, 0, −1, −1, −1, −2, −1<br>
+ตัด 0 ทิ้ง 2 ค่า → n = 8 · |D| = 1 มี 7 ตัว (อันดับเฉลี่ย 4) · |D| = 2 ได้อันดับ 8<br>
+T⁺ = 4 · T⁻ = 4×6 + 8 = 32 → T = 4 · ตาราง: 2P(T ≤ 4) = 2(0.0273) = 0.0546 &gt; 0.05 → <b>ยอมรับ H₀</b> มัธยฐาน = 10 นิ้ว
+</details>
+<details><summary>📌 SPSS: คะแนนความเครียด vs 22.74</summary>
+Analyze → Nonparametric Tests → One Sample → Settings: “Compare median to hypothesized (Wilcoxon signed-rank)” ใส่ M₀ = 22.74<br>
+p &lt; 0.001 → ปฏิเสธ H₀ → มัธยฐานคะแนนความเครียดต่างจากรายงานเดิม
+</details>
+</div>
+
+<h3>2) Mann–Whitney U Test</h3>
+<div class="card">
+<ol class="steps">
+<li>H₀: M₁ = M₂ ; H₁: M₁ ≠ M₂ (หรือ &gt; , &lt;) ; กำหนด α</li>
+<li>รวมตัวอย่างทั้ง 2 กลุ่ม (n = n₁ + n₂) เรียงอันดับ 1 ถึง n (ค่าซ้ำใช้อันดับเฉลี่ย)</li>
+<li>หาผลรวมอันดับของแต่ละกลุ่ม <b>T₁, T₂</b></li>
+<li><div class="formula" style="margin:4px 0">U₁ = n₁n₂ + n₁(n₁+1)/2 − T₁<br>U₂ = n₁n₂ + n₂(n₂+1)/2 − T₂<br><b>U = min(U₁, U₂)</b> &nbsp; (ตรวจสอบ: U₁ + U₂ = n₁n₂)</div></li>
+<li>ปฏิเสธ H₀ ถ้า <b>U ≤ U₀</b> (ตาราง Mann–Whitney) หรือ p ≤ α ; ถ้า n₁, n₂ &gt; 20 ประมาณด้วย Z</li>
+</ol>
+<details><summary>📌 ตัวอย่างคะแนน Online vs ห้องเรียน</summary>
+กลุ่ม 1 (n₁=7): 130 135 138 144 148 155 168 → อันดับ 1,2,3,5,7,9,12 → T₁ = 39<br>
+กลุ่ม 2 (n₂=9) → T₂ = 136 − 39 = 97<br>
+U₁ = 63 + 28 − 39 = 52 · U₂ = 63 + 45 − 97 = 11 · U = 11 ; U₀ = 12 → 11 &lt; 12 → <b>ปฏิเสธ H₀</b> ประสิทธิภาพการเรียนรู้ต่างกัน
+</details>
+<details><summary>📌 SPSS: ความเครียดชาย vs หญิง</summary>
+Analyze → Nonparametric Tests → Independent Samples (ตัวแปรเพศไปช่อง Groups) · Settings: Mann–Whitney U (2 samples)<br>
+p = 0.828 &gt; 0.05 → ยอมรับ H₀ → มัธยฐานความเครียดชายกับหญิงไม่แตกต่างกัน
+</details>
+</div>
+
+<h3>3) Wilcoxon Signed-Rank Test (Matched-Pair)</h3>
+<div class="card">
+<ol class="steps">
+<li>H₀: M<sub>ก่อน</sub> = M<sub>หลัง</sub> ; H₁: ≠ (หรือ &gt; , &lt;) ; กำหนด α</li>
+<li>หา <b>d<sub>i</sub> = ก่อน − หลัง</b> แต่ละคู่ · ตัดคู่ที่ d<sub>i</sub> = 0 ทิ้ง</li>
+<li>จัดอันดับ |d<sub>i</sub>| (ค่าซ้ำใช้อันดับเฉลี่ย) แล้วใส่เครื่องหมายตาม d<sub>i</sub> → หา T⁺, T⁻</li>
+<li>n = จำนวนคู่ที่ d ≠ 0 ; <b>T = min(T⁺, T⁻)</b></li>
+<li>ปฏิเสธ H₀ ถ้า <b>T ≤ T₀</b> (ตาราง Wilcoxon) หรือ p ≤ α</li>
+</ol>
+<details><summary>📌 ตัวอย่างอบรมทักษะดิจิทัล 12 คน</summary>
+d = 13, 7, 18, −5, −3, −1, 12, 12, 6, −7, 2, 2 · n = 12<br>
+T⁻ = 5 + 4 + 1 + 7.5 = 17.5 · T⁺ = 60.5 (รวม 78 ✔) · T = 17.5 &gt; T₀ = 14 → <b>ยอมรับ H₀</b> ความพร้อมก่อน-หลังไม่แตกต่างกัน
+</details>
+<details><summary>📌 SPSS: โปรแกรมบำบัดความเครียด (ก่อน-หลัง)</summary>
+Analyze → Nonparametric Tests → Related Samples · Settings: Wilcoxon Matched-Pair Signed-Rank (2 samples)<br>
+H₁: M<sub>ก่อน</sub> &gt; M<sub>หลัง</sub> · p &lt; 0.001 → ปฏิเสธ H₀ → โปรแกรมลดความเครียดได้ผล (ใช้เมื่อกลุ่ม “หลัง” ไม่ปกติ จึงไม่ใช้ Paired t)
+</details>
+</div>
+
+<h3>4) Kruskal–Wallis Test</h3>
+<div class="card">
+<ol class="steps">
+<li>H₀: M₁ = M₂ = … = M<sub>k</sub> ; H₁: อย่างน้อย 2 ค่าไม่เท่ากัน ; กำหนด α</li>
+<li>รวมทุกกลุ่ม (n = n₁ + … + n<sub>k</sub>) เรียงอันดับ 1 ถึง n</li>
+<li>หาผลรวมอันดับของแต่ละกลุ่ม R<sub>i</sub></li>
+<li><div class="formula" style="margin:4px 0"><b>KW = [12 / n(n+1)] · Σ (R<sub>i</sub>² / n<sub>i</sub>) − 3(n+1)</b></div></li>
+<li>ปฏิเสธ H₀ ถ้า <b>KW ≥ KW<sub>α</sub></b> (ตาราง Kruskal–Wallis หรือ χ²<sub>α, k−1</sub>) หรือ p ≤ α</li>
+</ol>
+<details><summary>📌 ตัวอย่างมโนทัศน์ ครู / ผู้บริหาร / ศึกษานิเทศก์</summary>
+n₁ = 5, n₂ = 5, n₃ = 4, n = 14 · R₁ = 22, R₂ = 37, R₃ = 46 (รวม 105 ✔)<br>
+KW = (12/(14·15))·(22²/5 + 37²/5 + 46²/4) − 3(15) = <b>6.4</b> &gt; KW<sub>α</sub> = 5.66 → <b>ปฏิเสธ H₀</b> มโนทัศน์ทั้ง 3 กลุ่มต่างกัน
+</details>
+<details><summary>📌 SPSS: 3 วิธีบำบัดความเครียด</summary>
+Analyze → Nonparametric Tests → Independent Samples · Settings: Kruskal–Wallis 1-way ANOVA (k samples)<br>
+p = 0.141 &gt; 0.05 → ยอมรับ H₀ → ประสิทธิภาพ 3 วิธี<b>ไม่แตกต่างกัน</b> (ใช้แทน ANOVA เพราะทุกกลุ่มไม่ปกติ)
+</details>
+</div>
+</section>
+
+<!-- ================= S4 ================= -->
+<section id="s4" class="s4">
+<h2>💜 บทที่ 7 สหสัมพันธ์ และการถดถอยเชิงเส้น</h2>
+
+<h3>A) การวิเคราะห์สหสัมพันธ์ (Correlation)</h3>
+<div class="card">
+<div class="def"><b>สหสัมพันธ์</b> = ศึกษาความสัมพันธ์<b>เชิงเส้นตรง</b>ระหว่างตัวแปรต่อเนื่องตั้งแต่ 2 ตัว · ค่าสัมประสิทธิ์สหสัมพันธ์ <b>r</b> (ตัวอย่าง) / <b>ρ</b> (ประชากร) บอก<b>ขนาด</b>และ<b>ทิศทาง</b><br>
+2 ตัว = simple correlation · &gt; 2 ตัว = multiple correlation</div>
+<div class="formula">r = Σ(X−X̄)(Y−Ȳ) / √[Σ(X−X̄)² · Σ(Y−Ȳ)²] = [ΣXY − (ΣX)(ΣY)/n] / √{[ΣX² − (ΣX)²/n][ΣY² − (ΣY)²/n]}<br>
+<b>−1 ≤ r ≤ +1</b></div>
+<div class="grid">
+<div>
+<table>
+<tr><th>ค่า r</th><th>ความหมาย</th></tr>
+<tr><td>r &gt; 0</td><td>ทิศทางเดียวกัน (แปรผันตาม)</td></tr>
+<tr><td>r &lt; 0</td><td>ทิศทางตรงข้าม (แปรผกผัน)</td></tr>
+<tr><td>r = +1 / −1</td><td>สัมพันธ์สมบูรณ์ทิศเดียวกัน / ตรงข้าม</td></tr>
+<tr><td>r = 0</td><td>ไม่มีความสัมพันธ์<b>เชิงเส้น</b></td></tr>
+</table>
+</div>
+<div>
+<table>
+<tr><th>|r|</th><th>ระดับ (Hinkle et al.)</th></tr>
+<tr><td>0.90 – 1.00</td><td>สูงมาก (Very high)</td></tr>
+<tr><td>0.70 – 0.90</td><td>สูง (High)</td></tr>
+<tr><td>0.50 – 0.70</td><td>ปานกลาง (Moderate)</td></tr>
+<tr><td>0.30 – 0.50</td><td>ต่ำ (Low)</td></tr>
+<tr><td>0.00 – 0.30</td><td>น้อยมาก (Negligible)</td></tr>
+</table>
+</div>
+</div>
+
+<h4>การทดสอบสมมติฐานเกี่ยวกับ ρ</h4>
+<ol class="steps">
+<li>H₀: ρ = 0 (ไม่มีความสัมพันธ์) ; H₁: ρ ≠ 0 (มีความสัมพันธ์) [ทางเดียว: ρ &gt; 0 หรือ ρ &lt; 0 ได้]</li>
+<li>กำหนด α = 0.05</li>
+<li>สถิติ ถ้า ρ₀ = 0: <span class="k">T = r·√(n−2) / √(1−r²) , df = n − 2</span><br>
+ถ้า ρ₀ ≠ 0: Z = [√(n−3)/2] · ln{ (1+r)(1−ρ₀) / [(1−r)(1+ρ₀)] }</li>
+<li>หา p-value (SPSS: Analyze → Correlate → Bivariate, ติ๊ก Pearson, Two-tailed)</li>
+<li>ปฏิเสธ H₀ ถ้า p ≤ α แล้วสรุป พร้อมบอก<b>ทิศทาง</b>(เครื่องหมาย r)และ<b>ระดับ</b>(ขนาด |r|)</li>
+</ol>
+<details><summary>📌 ตัวอย่างคิดมือ: รายได้ (X) กับค่าอาหาร (Y) 10 ครัวเรือน</summary>
+ΣX = 60, ΣY = 180, ΣX² = 406, ΣY² = 3,396, ΣXY = 1,159<br>
+r = (1,159 − 60·180/10) / √[(406 − 60²/10)(3,396 − 180²/10)] = 79 / 84.71 = <b>0.9326</b><br>
+t = 0.9326·√(8/(1−0.9326²)) = <b>7.309</b> , df = 8 → p = 8.3×10⁻⁵ &lt; 0.05 → ปฏิเสธ H₀<br>
+→ รายได้มีความสัมพันธ์ทางบวก<b>สูงมาก</b>กับค่าใช้จ่ายด้านอาหาร
+</details>
+<details><summary>📌 ตัวอย่าง SPSS: คะแนนความรู้ vs ความเครียด (n = 150)</summary>
+Pearson r = .073 , Sig. (2-tailed) = .372 &gt; 0.05 → <b>ยอมรับ H₀</b> → ไม่มีความสัมพันธ์ (p &gt; 0.05)<br>
+<i>(ถ้าได้ r = .734 , Sig. = .003 จะสรุปว่า มีความสัมพันธ์ทิศเดียวกัน ระดับสูง; ถ้า r = −.734 คือ ทิศตรงข้าม ระดับสูง)</i>
+</details>
+</div>
+
+<h3>B) การถดถอยเชิงเส้น (Linear Regression)</h3>
+<div class="card">
+<div class="def">เป็นวิธีศึกษารูปแบบความสัมพันธ์ระหว่าง <b>ตัวแปรตาม (Y)</b> กับ <b>ตัวแปรอิสระ (X)</b> เพื่อ ① ดูระดับ/ทิศทางที่ X แต่ละตัวมีผลต่อ Y ② สร้างสมการเพื่อ<b>ทำนาย Y</b><br>
+X ตัวเดียว = <b>simple</b> regression · X มากกว่า 1 ตัว = <b>multiple</b> regression</div>
+
+<h4>⭐ ตัวแบบประชากร vs ตัวแบบตัวอย่าง</h4>
+<table>
+<tr><th></th><th>ตัวแบบของ<b>ประชากร</b></th><th>ตัวแบบของ<b>ตัวอย่าง</b></th></tr>
+<tr><td>สมการ (simple)</td><td><b>Y = β₀ + β₁X + ε</b></td><td><b>Ŷ = b₀ + b₁X</b></td></tr>
+<tr><td>สมการ (multiple)</td><td>Y = β₀ + β₁X₁ + … + β<sub>k</sub>X<sub>k</sub> + ε</td><td>Ŷ = b₀ + b₁X₁ + … + b<sub>k</sub>X<sub>k</sub></td></tr>
+<tr><td>สัมประสิทธิ์</td><td>β = พารามิเตอร์ (ค่าจริงที่ไม่ทราบ)</td><td>b = <b>ตัวประมาณ</b>ของ β (คำนวณจากข้อมูล)</td></tr>
+<tr><td>ความคลาดเคลื่อน</td><td>มี ε (ตัวแปรสุ่ม)</td><td>ไม่มี ε (ได้ค่าทำนาย Ŷ ซึ่ง Y − Ŷ = ส่วนเหลือ/residual)</td></tr>
+</table>
+<ul>
+<li><b>β₀ (b₀)</b> = ค่าของ Y เมื่อ X = 0 (จุดตัดแกน Y)</li>
+<li><b>β₁ (b₁)</b> = ความชัน: X เพิ่ม 1 หน่วย → Y เปลี่ยนไป b₁ หน่วย · β₁ &gt; 0 ทิศเดียวกัน, &lt; 0 ทิศตรงข้าม, = 0 ไม่มีความสัมพันธ์เชิงเส้น</li>
+<li><b>Multiple:</b> b<sub>i</sub> = การเปลี่ยนของ Y เมื่อ X<sub>i</sub> เพิ่ม 1 หน่วย <u>โดยกำหนดให้ X อื่นคงที่</u> (partial regression coefficient)</li>
+</ul>
+<div class="warn"><b>ข้อสมมติของ ε:</b> แจกแจงปกติ · เป็นอิสระต่อกัน · ค่าเฉลี่ย = 0 · ความแปรปรวนคงที่ &nbsp;(+ multiple: ตัวแปรอิสระไม่สัมพันธ์กันเอง)</div>
+</div>
+
+<h4>🛠 การสร้างตัวแบบถดถอย (ลำดับงาน)</h4>
+<div class="card">
+<ol class="steps">
+<li><b>เตรียมข้อมูล X, Y</b> – ดู Scatter plot / Correlation ว่ามีแนวโน้มเชิงเส้นไหม</li>
+<li><b>ทดสอบสมมติฐาน</b> – F-test (ภาพรวมตัวแบบ) และ t-test (แต่ละ b)</li>
+<li><b>สร้างสมการ</b> Ŷ = b₀ + b₁X₁ + …</li>
+<li><b>ตรวจความเหมาะสม</b> – R², Adjusted R² และตรวจข้อตกลงเบื้องต้น</li>
+</ol>
+
+<table>
+<tr><th>การทดสอบ</th><th>H₀</th><th>H₁</th><th>สถิติ</th><th>ตอบคำถาม</th></tr>
+<tr><td><b>F-test (ANOVA)</b></td><td>β₁ = β₂ = … = β<sub>k</sub> = 0</td><td>มี β<sub>i</sub> อย่างน้อย 1 ตัว ≠ 0</td><td>F = MSTr/MSE ~ F(k−1, n−k)</td><td>มีตัวแปรอิสระ <b>อย่างน้อย 1 ตัว</b> ที่อธิบาย Y ได้ไหม (ตัวแบบใช้ได้ไหม)</td></tr>
+<tr><td><b>t-test สำหรับ β₁</b></td><td>β₁ = 0</td><td>β₁ ≠ 0</td><td>T = (b − β)/S<sub>b</sub> , df = n−2</td><td>X กับ Y <b>สัมพันธ์</b>กันไหม (ตัวแปรนี้ควรอยู่ในสมการไหม)</td></tr>
+<tr><td><b>t-test สำหรับ β₀</b></td><td>β₀ = 0</td><td>β₀ ≠ 0</td><td>T = (b₀ − β₀)/S<sub>a</sub> , df = n−2</td><td>จุดตัดแกน Y เป็น 0 ไหม</td></tr>
+</table>
+<div class="tip">ใน SPSS Output ตาราง <b>ANOVA</b> ดู Sig. ของ F-test · ตาราง <b>Coefficients</b> ดู Sig. ของ t แต่ละตัว (ปฏิเสธ H₀ ถ้า p ≤ α → β ≠ 0 → ตัวแปรนั้นมีผลต่อ Y)</div>
+
+<h4>📊 สัมประสิทธิ์การตัดสินใจ</h4>
+<div class="formula">r² (R²) = SSR/SST = b·Σxy/Σy² &nbsp;(หรือ SSTr/SST)</div>
+<div class="def">แปลผล: “ตัวแปร X ในสมการถดถอย <b>สามารถอธิบายความผันแปรของ Y ได้ร้อยละ (R² × 100)</b>” · multiple regression นิยมดู <b>Adjusted R²</b> (ปรับตามจำนวนตัวแปรอิสระ)</div>
+
+<h4>🧪 การตรวจเงื่อนไขเบื้องต้น (Assumption)</h4>
+<div class="scroll"><table>
+<tr><th>ข้อสมมติ</th><th>ตรวจด้วย</th><th>ผ่านเมื่อ</th></tr>
+<tr><td>ε แจกแจงปกติ</td><td>Normal P-P Plot ของ residual</td><td>จุดเรียงตามแนวเส้นทแยงมุม</td></tr>
+<tr><td>ε เป็นอิสระต่อกัน</td><td>Durbin-Watson</td><td>ค่าอยู่ระหว่าง <b>1.5 – 2.5</b></td></tr>
+<tr><td>ε มีค่าเฉลี่ย = 0</td><td>One-sample t-test กับ residual (ค่า 0)</td><td>p &gt; α (เช่น Sig. = 1.000)</td></tr>
+<tr><td>ε ความแปรปรวนคงที่</td><td>Scatter plot ระหว่าง Standardized residual (ZRESID) กับ ค่าทำนาย (ZPRED)</td><td>จุดกระจาย<b>ไม่มีรูปแบบ</b> (ไม่เป็นรูปกรวย/โค้ง)</td></tr>
+<tr><td>X ไม่สัมพันธ์กันเอง (multiple)</td><td>Collinearity: Tolerance (และ VIF)</td><td><b>Tolerance &gt; 0.1</b> (VIF ต่ำ)</td></tr>
+</table></div>
+
+<h4>🪜 วิธีคัดเลือกตัวแปรอิสระเข้าตัวแบบ</h4>
+<div class="grid">
+<div class="def"><b>Enter</b> – เลือกตัวแปรเข้าตัวแบบเองตามต้องการ</div>
+<div class="def"><b>Forward</b> – เพิ่มทีละตัว เริ่มจากตัวที่สัมพันธ์กับ Y มากสุด ทดสอบว่าสมควรอยู่ไหม ไม่สมควรก็หยุด</div>
+<div class="def"><b>Backward</b> – ใส่ทุกตัวก่อน แล้วตัดตัวที่ไม่สมควรออกทีละตัว</div>
+<div class="def"><b>Stepwise</b> – รวม Forward + Backward ในแต่ละขั้น (เพิ่มแล้วตรวจว่ามีตัวไหนควรตัดออกไหม) <b>เป็นวิธีที่นิยมใช้</b></div>
+</div>
+
+<details open><summary>📌 ตัวอย่างผู้ใช้ Google Play (n = 13, Stepwise)</summary>
+Y = ความพึงพอใจ ; X₁ = ใช้งานสะดวก, X₂ = เข้าถึง app, X₃ = ใช้ง่าย, X₄ = ชำระเงินสะดวก<br>
+Stepwise เลือกเข้า <b>X₄</b> ก่อน แล้ว <b>X₁</b> → ตัวแบบสุดท้าย (Model 2):<br>
+<div class="formula"><b>Ŷ = 103.097 + 1.440 X₁ − 0.614 X₄</b></div>
+<ul>
+<li>F-test (ANOVA) Sig. = .000 (&lt; 0.05) → มี X อย่างน้อย 1 ตัวอยู่ในสมการ</li>
+<li>t-test: β₀, β₁, β₄ ทั้งหมด Sig. &lt; .001 → ปฏิเสธ H₀ → ทุกค่า ≠ 0</li>
+<li><b>Adjusted R² = 0.967</b> → X₁ และ X₄ ร่วมกันอธิบายความผันแปรของ Y ได้ร้อยละ 96.7</li>
+<li>Durbin-Watson = 1.788 (อยู่ 1.5–2.5 ✔ ε อิสระ) · Tolerance = .940 &gt; 0.1 ✔ · P-P plot เรียงเส้นทแยง ✔ · Scatter ไม่มีรูปแบบ ✔</li>
+<li>แปลผล: X₁ เพิ่ม 1 หน่วย → Y <b>เพิ่ม</b> 1.440 หน่วย ; X₄ เพิ่ม 1 หน่วย → Y <b>ลดลง</b> 0.614 หน่วย (เมื่อกำหนดตัวแปรอื่นคงที่)</li>
+</ul>
+</details>
+SPSS: <code>Analyze → Regression → Linear</code> (Method เลือก Enter/Forward/Backward/Stepwise · Statistics: Estimates, Model fit, Durbin-Watson, Collinearity diagnostics · Plots: Normal probability plot, *ZRESID vs *ZPRED)
+</div>
+</section>
+
+<!-- ================= S5 ================= -->
+<section id="s5" class="s5">
+<h2>🍑 ฝึกอ่าน Output SPSS & เขียนสรุปผล</h2>
+<div class="card">
+<div class="tip"><b>กฎทอง 1 ข้อ:</b> ดูช่อง <b>Sig.</b> เทียบ α = 0.05 → <span class="pill-no">Sig. ≤ 0.05 = ปฏิเสธ H₀ = “แตกต่าง/มีความสัมพันธ์ อย่างมีนัยสำคัญทางสถิติ”</span> · <span class="pill-yes">Sig. &gt; 0.05 = ยอมรับ H₀ = “ไม่แตกต่าง/ไม่มีความสัมพันธ์ (ไม่มีนัยสำคัญทางสถิติ)”</span></div>
+<div class="scroll"><table>
+<tr><th>วิเคราะห์</th><th>เมนู SPSS</th><th>ดูตัวเลขไหน</th></tr>
+<tr><td>ทดสอบปกติ</td><td>Descriptive Statistics → Explore (Plots → Normality plots)</td><td>Tests of Normality: Shapiro-Wilk (n ≤ 50) / K-S (n &gt; 50) Sig.</td></tr>
+<tr><td>ความแปรปรวนเท่ากัน</td><td>Explore (Spread vs Level) หรือ Independent t-test</td><td>Levene: Sig. (Based on Mean) &gt; .05 ✔</td></tr>
+<tr><td>One-way ANOVA</td><td>Compare Means → One-Way ANOVA (+ Post Hoc)</td><td>ตาราง ANOVA: F, Sig. (Between Groups) · ถ้าปฏิเสธ ดู Multiple Comparisons</td></tr>
+<tr><td>Chi-square</td><td>Descriptive Statistics → Crosstabs</td><td>Pearson Chi-Square: Value, df, Asymptotic Sig. (2-sided) + หมายเหตุ % cells E &lt; 5</td></tr>
+<tr><td>Nonparametric 4 วิธี</td><td>Analyze → Nonparametric Tests → One Sample / Independent Samples / Related Samples</td><td>Hypothesis Test Summary: Sig. และ Decision</td></tr>
+<tr><td>Correlation</td><td>Correlate → Bivariate</td><td>Pearson Correlation (ขนาด/ทิศ) + Sig. (2-tailed)</td></tr>
+<tr><td>Regression</td><td>Regression → Linear</td><td>Model Summary (R, R², Adj R², Durbin-Watson) · ANOVA (F, Sig.) · Coefficients (B, t, Sig., Tolerance/VIF)</td></tr>
+</table></div>
+</div>
+
+<div class="card">
+<h4>✍️ แม่แบบประโยคสรุป</h4>
+<table>
+<tr><th>ผล</th><th>ตัวอย่างสรุป</th></tr>
+<tr><td><span class="pill-no">ปฏิเสธ H₀</span> (เปรียบเทียบ)</td><td>“…มีคะแนนเฉลี่ย (หรือมัธยฐาน) <b>แตกต่างกันอย่างมีนัยสำคัญทางสถิติ</b> ที่ระดับนัยสำคัญ 0.05 (p &lt; 0.05)”</td></tr>
+<tr><td><span class="pill-yes">ยอมรับ H₀</span> (เปรียบเทียบ)</td><td>“…คะแนนเฉลี่ย (หรือมัธยฐาน) <b>ไม่แตกต่างกัน</b> หรือ <b>ไม่มีนัยสำคัญทางสถิติ</b> (p &gt; 0.05)”</td></tr>
+<tr><td>Chi-square / Correlation</td><td>“…มี / ไม่มี <b>ความสัมพันธ์กัน</b> (p &lt; / &gt; 0.05)” · สหสัมพันธ์ให้เติม <b>ทิศทาง</b> + <b>ระดับ</b> + ค่า r</td></tr>
+<tr><td>Regression</td><td>“…X₁ มีผลต่อ Y อย่างมีนัยสำคัญ ; สมการ Ŷ = … ; ตัวแปรอิสระอธิบายความผันแปรของ Y ได้ร้อยละ (Adj R²×100)”</td></tr>
+</table>
+<div class="warn">⚠️ ระวังอ่านผิดบ่อย: ① ข้อตกลงเบื้องต้น (ปกติ/Levene) <b>อยากให้ p &gt; 0.05</b> (ยอมรับ H₀) ถึงจะผ่าน ② สหสัมพันธ์ไม่ได้แปลว่าเป็นเหตุเป็นผล ③ Durbin-Watson ผ่านเมื่ออยู่ 1.5–2.5 ไม่ใช่ดู p-value ④ ทดสอบทางเดียวให้หาร p สองทางด้วย 2</div>
+</div>
+</section>
+
+<!-- ================= S6 ================= -->
+<section id="s6" class="s6">
+<h2>🌼 ตารางเลือกสถิติทดสอบ (เช็กลิสต์ก่อนสอบ)</h2>
+<div class="card scroll">
+<table>
+<tr><th>โจทย์</th><th>ข้อมูลปกติ (Parametric)</th><th>ไม่ปกติ / อันดับ (Nonparametric)</th></tr>
+<tr><td>1 กลุ่ม เทียบค่ามาตรฐาน</td><td>One-sample t-test</td><td>One-Sample Wilcoxon Signed Rank</td></tr>
+<tr><td>2 กลุ่ม<b>อิสระ</b></td><td>Independent t-test</td><td>Mann–Whitney U</td></tr>
+<tr><td>2 กลุ่ม<b>จับคู่ / ก่อน-หลัง</b></td><td>Paired t-test</td><td>Wilcoxon Matched-Pair Signed-Rank</td></tr>
+<tr><td>≥ 3 กลุ่ม<b>อิสระ</b></td><td>One-way ANOVA (+ LSD/Tukey/Scheffé/Bonferroni)</td><td>Kruskal–Wallis</td></tr>
+<tr><td>ตัวแปรเชิงคุณภาพ 2 ตัว สัมพันธ์ไหม</td><td colspan="2" style="text-align:center">χ² test of Independence</td></tr>
+<tr><td>หลายประชากร สัดส่วนต่างกันไหม</td><td colspan="2" style="text-align:center">χ² test of Homogeneity</td></tr>
+<tr><td>ข้อมูลตรงกับการแจกแจงที่คาดไหม</td><td colspan="2" style="text-align:center">χ² Goodness of fit</td></tr>
+<tr><td>ตัวแปรต่อเนื่อง 2 ตัว สัมพันธ์เชิงเส้นไหม</td><td colspan="2" style="text-align:center">Pearson correlation (t-test ของ r)</td></tr>
+<tr><td>ทำนาย Y จาก X</td><td colspan="2" style="text-align:center">Simple / Multiple linear regression (F-test, t-test, R², ตรวจ assumption)</td></tr>
+</table>
+</div>
+
+<div class="card">
+<h4>📝 เช็กลิสต์ทวนก่อนสอบ</h4>
+<ul>
+<li>☐ เขียน H₀/H₁ ได้ถูก (ใช้ μ สำหรับ parametric, M สำหรับมัธยฐาน, p สำหรับสัดส่วน)</li>
+<li>☐ รู้ว่าแต่ละวิธี<b>ใช้แทนวิธี parametric ตัวไหน</b> และเงื่อนไขอิสระ/ไม่อิสระ</li>
+<li>☐ จำสูตร: F, MSTr/MSE, LSD, χ², E<sub>ij</sub>, df, U, T (Wilcoxon), KW, r และ t ของ r, Ŷ, R²</li>
+<li>☐ ยุบเซลล์ไคกำลังสอง (กฎ 20%, Yates, Fisher)</li>
+<li>☐ ตรวจ assumption ของ ANOVA และ regression ได้ พร้อมเกณฑ์ผ่าน</li>
+<li>☐ อ่าน Output SPSS แล้วเขียนสรุปเป็นภาษาเนื้อหาได้</li>
+</ul>
+</div>
+</section>
+
+<footer>🌸 ทำจากสไลด์บท 5, 6, 7 ของ อ.ดร.ธนวรรณ · ขอให้สอบผ่านสวย ๆ นะคะ ✨<br>ส่วนที่เป็นความรู้เสริมทั่วไป (เช่น เหตุผลที่ไม่ใช้ t-test ซ้ำ) ไม่ได้มาจากสไลด์โดยตรง</footer>
+</div>
+</body>
+</html>
