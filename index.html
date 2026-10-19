@@ -64,6 +64,14 @@ footer{text-align:center;color:var(--muted);margin-top:50px;font-size:14px}
 sub,sup{line-height:0}
 @media print{nav{display:none} body{background:#fff} .card,details{break-inside:avoid}}
 </style>
+
+<style>
+.lesson{background:#fffdf7;border:2px solid var(--yellow-d);border-radius:20px;padding:10px 18px;margin:18px 0}
+.lesson>summary{font-size:17px;color:var(--yellow-d)}
+.lesson h5{margin:12px 0 4px;font-size:15px;color:var(--lav-d)}
+.lesson table{font-size:14px}
+.lesson .ans{background:var(--mint);border-radius:12px;padding:6px 12px;margin:4px 0}
+</style>
 </head>
 <body>
 
@@ -125,6 +133,18 @@ sub,sup{line-height:0}
 </table>
 <div class="tip">ถ้า<b>ไม่ปกติ</b> → ไปใช้วิธีไม่ใช้พารามิเตอร์ (บท 6)</div>
 </div>
+<details class="lesson" open><summary>📘 สอนละเอียด: ตัวอย่างทดสอบสมมติฐานครบ 5 ขั้น (t-test 1 กลุ่ม)</summary>
+<p><b>โจทย์:</b> ขนมถุงหนึ่งระบุน้ำหนัก 50 g สุ่มมา 8 ถุง ได้ 48, 52, 47, 50, 46, 49, 45, 51 ข้อมูลปกติ ถามว่าน้ำหนักเฉลี่ย<b>ต่างจาก 50 g</b> ไหม (α = 0.05)</p>
+<ol class="steps">
+<li><b>ตั้งสมมติฐาน</b> H₀: μ = 50 ; H₁: μ ≠ 50 (สองทาง เพราะถามว่า “ต่าง”)</li>
+<li><b>α = 0.05</b></li>
+<li><b>เลือกสถิติ</b> σ ไม่ทราบ, n เล็ก, ข้อมูลปกติ → t-test 1 กลุ่ม : <span class="k">t = (X̄ − μ₀)/(s/√n)</span>, df = n−1 = 7</li>
+<li><b>คำนวณ</b> X̄ = 388/8 = 48.5 ; s = 2.449 ; s/√n = 2.449/2.828 = 0.866<br>t = (48.5 − 50)/0.866 = <b>−1.732</b> ; p (สองทาง) = <b>0.127</b></li>
+<li><b>ตัดสินใจ</b> |t| = 1.732 &lt; t<sub>0.025,7</sub> = 2.365 (หรือ p = 0.127 &gt; 0.05) → <b>ยอมรับ H₀</b><br>สรุป: น้ำหนักเฉลี่ยไม่ต่างจาก 50 g อย่างมีนัยสำคัญที่ระดับ 0.05</li>
+</ol>
+<div class="tip"><b>ลองเปลี่ยนเป็นทางเดียว</b> H₁: μ &lt; 50 (สงสัยว่า “น้อยกว่า”) → p = 0.127 ÷ 2 = <b>0.063</b> ยัง &gt; 0.05 ยอมรับ H₀ เหมือนเดิม (นี่คือที่มาของกฎ “หารครึ่ง”)</div>
+<div class="warn"><b>เชื่อมกับ Type I / II:</b> ถ้าจริง ๆ ขนมเบากว่า 50 g แต่เรายอมรับ H₀ → เกิด <b>Type II</b> (ปล่อยของไม่ครบผ่าน) ซึ่งมักเกิดเมื่อ n น้อย ลองเพิ่ม n ก็ทำให้ตรวจเจอง่ายขึ้น (อำนาจการทดสอบสูงขึ้น)</div>
+</details>
 </section>
 
 <!-- ================= S1 ================= -->
@@ -208,6 +228,32 @@ Scheffé: ปี 1 vs ปี 2 Sig. = .978 &gt; .05 → <b>ไม่ต่าง
 ค่าเฉลี่ย: ปี2 = 20.13, ปี1 = 20.93 (กลุ่ม a) | ปี4 = 27.79, ปี3 = 29.45 (กลุ่ม c) → ปี 1,2 ไม่ต่างกัน; ปี 3,4 ไม่ต่างกัน; แต่ 2 กลุ่มนี้ต่างกัน
 </details>
 </div>
+<details class="lesson" open><summary>📘 สอนละเอียด: ANOVA + LSD คิดมือทีละขั้น</summary>
+<p><b>โจทย์:</b> เทียบคะแนนสอบของ 3 วิธีสอน (A, B, C กลุ่มละ 4 คน, n = 12) α = 0.05 สมมติผ่านข้อตกลงเบื้องต้นแล้ว</p>
+<div class="scroll"><table>
+<tr><th>กลุ่ม</th><th>ข้อมูล</th><th>ผลรวม X<sub>i.</sub></th><th>ค่าเฉลี่ย</th></tr>
+<tr><td>A</td><td>5, 6, 7, 6</td><td>24</td><td>6</td></tr>
+<tr><td>B</td><td>8, 9, 7, 8</td><td>32</td><td>8</td></tr>
+<tr><td>C</td><td>4, 5, 3, 4</td><td>16</td><td>4</td></tr></table></div>
+<ol class="steps">
+<li><b>สมมติฐาน</b> H₀: μ_A = μ_B = μ_C ; H₁: อย่างน้อย 2 ค่าไม่เท่ากัน</li>
+<li><b>หาค่าตั้งต้น</b> ΣΣX = 72 ; ΣΣX² = 470 ; <b>ตัวแก้ (ΣΣX)²/n = 72²/12 = 432</b></li>
+<li><b>SST</b> = 470 − 432 = <b>38</b></li>
+<li><b>SSTr</b> = (24² + 32² + 16²)/4 − 432 = 464 − 432 = <b>32</b> ; <b>SSE</b> = 38 − 32 = <b>6</b></li>
+<li><b>ใส่ตาราง</b> (df: k−1 = 2, n−k = 9, n−1 = 11)
+<div class="scroll"><table><tr><th>แหล่ง</th><th>df</th><th>SS</th><th>MS</th><th>F</th></tr>
+<tr><td>ระหว่างกลุ่ม</td><td>2</td><td>32</td><td>16</td><td><b>24</b></td></tr>
+<tr><td>ภายในกลุ่ม</td><td>9</td><td>6</td><td>0.667</td><td></td></tr>
+<tr><td>รวม</td><td>11</td><td>38</td><td></td><td></td></tr></table></div></li>
+<li><b>ตัดสินใจ</b> F = 24 &gt; f<sub>0.05,(2,9)</sub> = 4.26 (p = 0.00025) → <b>ปฏิเสธ H₀</b> → มีอย่างน้อย 1 คู่ที่ต่างกัน → ทำ LSD ต่อ</li>
+<li><b>LSD</b> = t<sub>0.025,9</sub>·√[MSE(1/4+1/4)] = 2.262·√(0.667×0.5) = 2.262×0.577 = <b>1.31</b>
+<table><tr><th>คู่</th><th>|ผลต่างค่าเฉลี่ย|</th><th>เทียบ 1.31</th><th>ผล</th></tr>
+<tr><td>A–B</td><td>2</td><td>&gt;</td><td class="pill-no">ต่าง (B สูงกว่า)</td></tr>
+<tr><td>A–C</td><td>2</td><td>&gt;</td><td class="pill-no">ต่าง (A สูงกว่า)</td></tr>
+<tr><td>B–C</td><td>4</td><td>&gt;</td><td class="pill-no">ต่าง (B สูงกว่า)</td></tr></table></li>
+</ol>
+<div class="tip"><b>สรุปเขียนตอบ:</b> วิธีสอนทั้ง 3 มีคะแนนเฉลี่ยต่างกันอย่างมีนัยสำคัญ (F = 24, p &lt; 0.05) และต่างกันทุกคู่ โดยวิธี B ดีที่สุด (8) รองลงมา A (6) และ C (4) ตามลำดับ<br><b>จุดที่นักเรียนพลาดบ่อย:</b> ลืมหารด้วย n<sub>i</sub> ตอนคิด SSTr · ใช้ df ผิด (ต้อง k−1 และ n−k)</div>
+</details>
 </section>
 
 <!-- ================= S2 ================= -->
@@ -277,6 +323,25 @@ p = 0.315 &gt; 0.05 → <b>ยอมรับ H₀</b> → เพศกับร
 </ol>
 <div class="tip">SPSS: <code>Analyze → Descriptive Statistics → Crosstabs</code> · Statistics ติ๊ก <b>Chi-square</b> · Cells ติ๊ก <b>Observed, Expected</b></div>
 </div>
+<details class="lesson" open><summary>📘 สอนละเอียด: χ² Independence คิดมือ (ตาราง 2×3)</summary>
+<p><b>โจทย์:</b> สุ่มลูกค้า 150 คน ดูว่า “ช่องทางซื้อ” สัมพันธ์กับ “กลุ่มอายุ” ไหม (α = 0.05) <i>(เก็บจากกลุ่มเดียว วัด 2 ตัวแปร → Independence)</i></p>
+<table><tr><th>O</th><th>&lt; 20 ปี</th><th>20–40 ปี</th><th>&gt; 40 ปี</th><th>รวม</th></tr>
+<tr><td>ออนไลน์</td><td>30</td><td>20</td><td>10</td><td>60</td></tr>
+<tr><td>หน้าร้าน</td><td>20</td><td>30</td><td>40</td><td>90</td></tr>
+<tr><td>รวม</td><td>50</td><td>50</td><td>50</td><td>150</td></tr></table>
+<ol class="steps">
+<li><b>H₀</b> ช่องทางซื้อกับกลุ่มอายุเป็นอิสระต่อกัน ; <b>H₁</b> ไม่เป็นอิสระ (สัมพันธ์กัน)</li>
+<li><b>หา E</b> = (รวมแถว × รวมคอลัมน์)/n<br>ออนไลน์: 60×50/150 = <b>20</b> ทั้ง 3 ช่อง · หน้าร้าน: 90×50/150 = <b>30</b> ทั้ง 3 ช่อง<br><i>เช็ก: E ทุกช่อง ≥ 5 ✔ ไม่ต้องยุบเซลล์</i></li>
+<li><b>คำนวณ</b> Σ(O−E)²/E<br>แถวออนไลน์: 10²/20 + 0²/20 + 10²/20 = 5 + 0 + 5 = 10<br>แถวหน้าร้าน: 10²/30 + 0²/30 + 10²/30 = 3.33 + 0 + 3.33 = 6.67<br><b>χ² = 16.67</b> , df = (2−1)(3−1) = <b>2</b></li>
+<li><b>ตัดสินใจ</b> χ²<sub>0.05,2</sub> = 5.991 → 16.67 &gt; 5.991 (p = 0.00024) → <b>ปฏิเสธ H₀</b></li>
+<li><b>สรุป</b> ช่องทางซื้อสัมพันธ์กับกลุ่มอายุ (p &lt; 0.05) · ดูต่อ: ผู้ซื้อออนไลน์พบมากในวัยรุ่น (30 &gt; E 20) ส่วนหน้าร้านพบมากในวัย &gt; 40 (40 &gt; E 30)</li>
+</ol>
+<h5>🔁 ถ้าโจทย์เปลี่ยนเป็น Homogeneity / Goodness of fit</h5>
+<ul>
+<li><b>Homogeneity:</b> คิดเหมือนกันทุกบรรทัด ต่างแค่ตอนเขียน H₀ เช่น “สัดส่วนผู้ซื้อออนไลน์ของ 3 กลุ่มอายุเท่ากัน” (ถ้าสุ่มแยกกลุ่มละ 50 คน)</li>
+<li><b>Goodness of fit (ลูกเต๋า):</b> โยน 60 ครั้ง H₀: ยุติธรรม (p<sub>i</sub> = 1/6) → E = 60/6 = 10 ทุกหน้า สมมติได้ 8, 12, 9, 11, 7, 13 → χ² = (4+4+1+1+9+9)/10 = <b>2.8</b> ; df = 6−1 = 5 (ไม่ต้องประมาณพารามิเตอร์ m = 0) ; χ²<sub>0.05,5</sub> = 11.07 → ยอมรับ H₀ ลูกเต๋าไม่ผิดปกติ</li>
+</ul>
+</details>
 </section>
 
 <!-- ================= S3 ================= -->
@@ -388,6 +453,34 @@ Analyze → Nonparametric Tests → Independent Samples · Settings: Kruskal–W
 p = 0.141 &gt; 0.05 → ยอมรับ H₀ → ประสิทธิภาพ 3 วิธี<b>ไม่แตกต่างกัน</b> (ใช้แทน ANOVA เพราะทุกกลุ่มไม่ปกติ)
 </details>
 </div>
+<details class="lesson" open><summary>📘 สอนละเอียด: nonparametric ทั้ง 4 วิธี คิดมือทีละขั้น</summary>
+<div class="tip"><b>แกนกลางของทุกวิธี:</b> เปลี่ยนค่าเป็น<b>อันดับ</b> → รวมอันดับ → เทียบกับตารางวิกฤต · ค่าซ้ำให้ใช้ <b>อันดับเฉลี่ย</b></div>
+
+<h5>① One-Sample Wilcoxon — น้ำหนักขนม 8 ถุง (48, 52, 47, 50, 46, 49, 45, 51) H₀: M = 50</h5>
+D = X − 50 = −2, +2, −3, <b>0</b>, −4, −1, −5, +1 → ตัด 0 ทิ้ง ได้ <b>n = 7</b><br>
+|D| เรียง: 1, 1, 2, 2, 3, 4, 5 → อันดับ 1.5, 1.5, 3.5, 3.5, 5, 6, 7 (ค่าซ้ำเฉลี่ย)<br>
+T⁺ = (+2 → 3.5) + (+1 → 1.5) = <b>5</b> ; T⁻ = 28 − 5 = <b>23</b> (n(n+1)/2 = 28 ✔) → T = min = <b>5</b><br>
+ตารางสองทาง α = 0.05, n = 7: T<sub>0</sub> = 2 → T = 5 &gt; 2 → <b>ยอมรับ H₀</b> มัธยฐานไม่ต่างจาก 50
+
+<h5>② Mann–Whitney U — เวลาทำงาน (นาที) 2 กลุ่มอิสระ H₀: M₁ = M₂</h5>
+กลุ่ม 1 (n₁ = 5): 12, 15, 14, 10, 18 · กลุ่ม 2 (n₂ = 6): 20, 22, 17, 25, 19, 21<br>
+รวม 11 ค่าเรียง: 10, 12, 14, 15, 17, 18, 19, 20, 21, 22, 25 → อันดับของกลุ่ม 1 = 2, 4, 3, 1, 6 → <b>T₁ = 16</b> ; T₂ = 66 − 16 = <b>50</b><br>
+U₁ = 5×6 + 5(6)/2 − 16 = <b>29</b> ; U₂ = 30 + 6(7)/2 − 50 = <b>1</b> (U₁+U₂ = 30 = n₁n₂ ✔) → U = <b>1</b><br>
+ตาราง (5, 6) สองทาง 0.05: U<sub>0</sub> = 3 → 1 ≤ 3 → <b>ปฏิเสธ H₀</b> (p ≈ 0.009) กลุ่ม 2 ใช้เวลามากกว่า
+
+<h5>③ Wilcoxon Matched-Pair — ก่อน/หลังลดน้ำหนัก 10 คน H₀: M<sub>ก่อน</sub> = M<sub>หลัง</sub></h5>
+ก่อน: 70, 65, 80, 72, 68, 75, 90, 66, 78, 85 · หลัง: 64, 66, 70, 65, 60, 68, 80, 66, 70, 75<br>
+d = ก่อน−หลัง = 6, −1, 10, 7, 8, 7, 10, <b>0</b>, 8, 10 → ตัด 0 ได้ <b>n = 9</b><br>
+|d| เรียง: 1, 6, 7, 7, 8, 8, 10, 10, 10 → อันดับ 1, 2, 3.5, 3.5, 5.5, 5.5, 8, 8, 8<br>
+T⁻ (เฉพาะ −1) = <b>1</b> ; T⁺ = 45 − 1 = 44 → T = <b>1</b> ; ตาราง n = 9 สองทาง: T<sub>0</sub> = 5 → 1 ≤ 5 → <b>ปฏิเสธ H₀</b> (p ≈ 0.008) น้ำหนักลดลงจริง
+
+<h5>④ Kruskal–Wallis — ยอดขาย 3 สาขา (k = 3, n = 12) H₀: M₁ = M₂ = M₃</h5>
+สาขา 1: 7, 9, 6, 8 · สาขา 2: 12, 11, 14, 10 · สาขา 3: 15, 13, 17, 16<br>
+เรียงรวมแล้วได้ผลรวมอันดับ <b>R₁ = 10, R₂ = 27, R₃ = 41</b> (รวม 78 = 12·13/2 ✔)<br>
+KW = [12/(12·13)]·(10²/4 + 27²/4 + 41²/4) − 3(13) = 0.0769 × 627.5 − 39 = <b>9.27</b><br>
+χ²<sub>0.05,2</sub> = 5.991 → 9.27 &gt; 5.991 (p = 0.0097) → <b>ปฏิเสธ H₀</b> ยอดขายอย่างน้อย 2 สาขาต่างกัน
+<div class="warn"><b>เคล็ดลับตรวจงานตัวเอง:</b> ผลรวมอันดับต้องได้ n(n+1)/2 เสมอ · Mann–Whitney ต้อง U₁+U₂ = n₁n₂ · Wilcoxon ต้อง T⁺+T⁻ = n(n+1)/2 (n หลังตัด 0 แล้ว)</div>
+</details>
 </section>
 
 <!-- ================= S4 ================= -->
@@ -517,6 +610,32 @@ Stepwise เลือกเข้า <b>X₄</b> ก่อน แล้ว <b>X�
 </details>
 SPSS: <code>Analyze → Regression → Linear</code> (Method เลือก Enter/Forward/Backward/Stepwise · Statistics: Estimates, Model fit, Durbin-Watson, Collinearity diagnostics · Plots: Normal probability plot, *ZRESID vs *ZPRED)
 </div>
+<details class="lesson" open><summary>📘 สอนละเอียด: สหสัมพันธ์ + ถดถอยเชิงเส้นอย่างง่าย (ชุดข้อมูลเดียวกัน)</summary>
+<p><b>โจทย์:</b> ชั่วโมงอ่านหนังสือ (X) กับคะแนนสอบ (Y) ของนักศึกษา 6 คน</p>
+<div class="scroll"><table><tr><th>X</th><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td></tr><tr><th>Y</th><td>2</td><td>4</td><td>5</td><td>4</td><td>7</td><td>9</td></tr></table></div>
+<h5>ขั้น 1: ผลรวมตั้งต้น</h5>
+n = 6 · ΣX = 21 · ΣY = 31 · ΣX² = 91 · ΣY² = 191 · ΣXY = 130<br>
+S<sub>xx</sub> = 91 − 21²/6 = <b>17.5</b> · S<sub>yy</sub> = 191 − 31²/6 = <b>30.83</b> · S<sub>xy</sub> = 130 − (21)(31)/6 = <b>21.5</b>
+<h5>ขั้น 2: สหสัมพันธ์</h5>
+r = S<sub>xy</sub>/√(S<sub>xx</sub>S<sub>yy</sub>) = 21.5/√(17.5×30.83) = 21.5/23.23 = <b>0.926</b><br>
+ทดสอบ H₀: ρ = 0 → t = r√(n−2)/√(1−r²) = 0.926×2/0.378 = <b>4.89</b>, df = 4 ; t<sub>0.025,4</sub> = 2.776 → ปฏิเสธ H₀ (p = 0.008)<br>
+<i>สรุป: มีความสัมพันธ์ทิศเดียวกัน ระดับสูงมาก (r = 0.926 อยู่ช่วง 0.90–1.00)</i>
+<h5>ขั้น 3: สร้างสมการถดถอย</h5>
+b₁ = S<sub>xy</sub>/S<sub>xx</sub> = 21.5/17.5 = <b>1.229</b> · X̄ = 3.5, Ȳ = 5.167 → b₀ = Ȳ − b₁X̄ = 5.167 − 1.229×3.5 = <b>0.867</b><br>
+<div class="formula"><b>Ŷ = 0.867 + 1.229 X</b></div>
+<h5>ขั้น 4: แปลผลและใช้ทำนาย</h5>
+<ul>
+<li><b>b₁ = 1.229:</b> อ่านเพิ่ม 1 ชั่วโมง คะแนนเพิ่มโดยเฉลี่ย 1.229 คะแนน</li>
+<li><b>b₀ = 0.867:</b> ถ้าไม่อ่านเลย (X = 0) คาดว่าได้ประมาณ 0.867 คะแนน</li>
+<li><b>ทำนาย X = 7:</b> Ŷ = 0.867 + 1.229×7 = <b>9.47</b> <i>(ระวัง: X = 7 อยู่นอกช่วงข้อมูล 1–6 เป็นการคาดการณ์เกินช่วง ควรใช้อย่างระมัดระวัง)</i></li>
+<li><b>residual ของ X = 3:</b> Ŷ = 4.55, Y จริง = 5 → e = Y − Ŷ = <b>0.45</b></li>
+<li><b>R² = r² = 0.857</b> → ชั่วโมงอ่านอธิบายความผันแปรของคะแนนได้ร้อยละ 85.7</li>
+</ul>
+<h5>ขั้น 5: F-test และ t-test ของ b₁</h5>
+SSR = b₁S<sub>xy</sub> = 26.41 ; SSE = S<sub>yy</sub> − SSR = 4.42 ; MSE = 4.42/4 = 1.105 → <b>F = 26.41/1.105 = 23.9</b> (df 1, 4 ; p = 0.008)<br>
+<div class="tip">สังเกต: F = 23.9 = t² (4.89²) · ในตัวแบบ X ตัวเดียว F-test กับ t-test ของ b₁ ให้ p-value เท่ากันเสมอ และ p เท่ากับ p ของ r ด้วย</div>
+<div class="warn"><b>Multiple regression อ่านยังไง:</b> สมมติได้ Ŷ = 20 + 3X₁ − 2X₂ → “X₁ เพิ่ม 1 หน่วย Y เพิ่ม 3 <u>เมื่อ X₂ คงที่</u>” และ “X₂ เพิ่ม 1 หน่วย Y ลด 2 เมื่อ X₁ คงที่” (คำว่า “เมื่อตัวแปรอื่นคงที่” ห้ามลืมเขียน) ถ้า Sig. ของ t ตัวไหน &gt; 0.05 แปลว่าตัวนั้นไม่ควรอยู่ในสมการ</div>
+</details>
 </section>
 
 <!-- ================= S5 ================= -->
@@ -547,6 +666,28 @@ SPSS: <code>Analyze → Regression → Linear</code> (Method เลือก Ent
 </table>
 <div class="warn">⚠️ ระวังอ่านผิดบ่อย: ① ข้อตกลงเบื้องต้น (ปกติ/Levene) <b>อยากให้ p &gt; 0.05</b> (ยอมรับ H₀) ถึงจะผ่าน ② สหสัมพันธ์ไม่ได้แปลว่าเป็นเหตุเป็นผล ③ Durbin-Watson ผ่านเมื่ออยู่ 1.5–2.5 ไม่ใช่ดู p-value ④ ทดสอบทางเดียวให้หาร p สองทางด้วย 2</div>
 </div>
+<details class="lesson" open><summary>📘 สอนละเอียด: ฝึกอ่าน Output SPSS ทีละช่อง (ใช้ข้อมูลสหสัมพันธ์/ถดถอยข้างบน)</summary>
+<h5>Model Summary</h5>
+<table><tr><th>R</th><th>R Square</th><th>Adjusted R Square</th><th>Std. Error</th></tr><tr><td>.926</td><td>.857</td><td>.821</td><td>1.051</td></tr></table>
+<p>👉 อ่าน <b>R Square</b> = .857 → ตัวแปรอิสระอธิบาย Y ได้ร้อยละ 85.7 (ถ้า multiple regression ให้ใช้ Adjusted R Square)</p>
+<h5>ANOVA</h5>
+<table><tr><th></th><th>SS</th><th>df</th><th>MS</th><th>F</th><th>Sig.</th></tr>
+<tr><td>Regression</td><td>26.414</td><td>1</td><td>26.414</td><td>23.9</td><td>.008</td></tr>
+<tr><td>Residual</td><td>4.419</td><td>4</td><td>1.105</td><td></td><td></td></tr></table>
+<p>👉 ดู <b>Sig. = .008 &lt; .05</b> → ปฏิเสธ H₀ → ตัวแบบใช้ได้ (มี X อย่างน้อย 1 ตัวอธิบาย Y)</p>
+<h5>Coefficients</h5>
+<table><tr><th></th><th>B</th><th>Std. Error</th><th>Beta</th><th>t</th><th>Sig.</th></tr>
+<tr><td>(Constant)</td><td>.867</td><td>.978</td><td></td><td>.886</td><td>.426</td></tr>
+<tr><td>X</td><td>1.229</td><td>.251</td><td>.926</td><td>4.890</td><td>.008</td></tr></table>
+<ol class="steps">
+<li>คอลัมน์ <b>B</b> คือ b₀ และ b₁ → เขียนสมการ Ŷ = 0.867 + 1.229X</li>
+<li><b>Sig. ของ X = .008 &lt; .05</b> → ปฏิเสธ H₀: β₁ = 0 → X มีผลต่อ Y</li>
+<li><b>Sig. ของ Constant = .426 &gt; .05</b> → ไม่ปฏิเสธ H₀: β₀ = 0 (จุดตัดแกนไม่ต่างจาก 0 อย่างมีนัยสำคัญ — ปกติไม่ต้องกังวล สมการยังใช้ได้)</li>
+<li>ปิดท้ายด้วยการตรวจ assumption (Durbin-Watson, P-P plot, ZRESID vs ZPRED)</li>
+</ol>
+<div class="tip"><b>ฝึกอ่านตาราง Levene + ANOVA (ตัวอย่างข้อมูล A, B, C ใน ANOVA)</b><br>
+ถ้า Levene Sig. = .62 → &gt; .05 ✔ ความแปรปรวนเท่ากัน → อ่าน ANOVA ได้ · F = 24.000, Sig. = .000 → ปฏิเสธ H₀ (SPSS แสดง .000 หมายถึง &lt; .001 ไม่ใช่ 0 เป๊ะ เขียนในสรุปเป็น p &lt; .001)</div>
+</details>
 </section>
 
 <!-- ================= S6 ================= -->
@@ -578,9 +719,79 @@ SPSS: <code>Analyze → Regression → Linear</code> (Method เลือก Ent
 <li>☐ อ่าน Output SPSS แล้วเขียนสรุปเป็นภาษาเนื้อหาได้</li>
 </ul>
 </div>
+<details class="lesson" open><summary>📘 สอนละเอียด: ฝึกเลือกสถิติ 6 โจทย์ (กดดูเฉลย)</summary>
+<p>วิธีคิดให้เป็นลำดับ: <b>① ตัวแปรตามเป็นชนิดไหน (ปริมาณ / คุณภาพ) → ② กี่กลุ่ม / กี่ตัวแปร → ③ อิสระหรือจับคู่ → ④ ปกติไหม</b></p>
+<details><summary>1) วัดความดันของคนไข้ 20 คน ก่อน-หลังกินยา ข้อมูลปกติ</summary><div class="ans">ปริมาณ + 2 กลุ่ม + <b>จับคู่</b> + ปกติ → <b>Paired t-test</b> (ถ้าไม่ปกติ → Wilcoxon Matched-Pair)</div></details>
+<details><summary>2) เทียบรายได้ของพนักงาน 4 แผนก (ไม่ปกติ)</summary><div class="ans">ปริมาณ + 4 กลุ่ม<b>อิสระ</b> + ไม่ปกติ → <b>Kruskal–Wallis</b> (ถ้าปกติ → One-way ANOVA)</div></details>
+<details><summary>3) สุ่มคนมา 200 คน ถามเพศ และยี่ห้อมือถือที่ใช้ ว่าสัมพันธ์กันไหม</summary><div class="ans">คุณภาพ 2 ตัว จากกลุ่มเดียว → <b>χ² Independence</b></div></details>
+<details><summary>4) สุ่มนักเรียนแยก 3 โรงเรียน เทียบสัดส่วนคนที่สอบผ่านว่าเท่ากันไหม</summary><div class="ans">สุ่มแยกหลายประชากร เทียบสัดส่วน → <b>χ² Homogeneity</b></div></details>
+<details><summary>5) ต้องการประมาณยอดขาย (Y) จากงบโฆษณาและจำนวนสาขา</summary><div class="ans">ทำนาย Y จาก X 2 ตัว → <b>Multiple linear regression</b> (ตรวจ Tolerance/VIF ด้วย)</div></details>
+<details><summary>6) เปรียบเทียบคะแนนความพอใจ (1–5) ของลูกค้า 2 สาขา ข้อมูลเป็นอันดับ ไม่ปกติ</summary><div class="ans">2 กลุ่ม<b>อิสระ</b> + อันดับ → <b>Mann–Whitney U</b></div></details>
+</details>
 </section>
 
 <footer>🌸 ทำจากสไลด์บท 5, 6, 7 ของ อ.ดร.ธนวรรณ · ขอให้สอบผ่านสวย ๆ นะคะ ✨<br>ส่วนที่เป็นความรู้เสริมทั่วไป (เช่น เหตุผลที่ไม่ใช้ t-test ซ้ำ) ไม่ได้มาจากสไลด์โดยตรง</footer>
 </div>
+
+<!-- ===== PRANK PAYWALL (ของปลอม ไม่มีการเก็บเงินจริง) ===== -->
+<style>
+#pw{position:fixed;inset:0;z-index:9999;display:none;align-items:center;justify-content:center;padding:18px;
+  background:rgba(255,248,241,.55);backdrop-filter:blur(9px);-webkit-backdrop-filter:blur(9px)}
+#pw.show{display:flex}
+#pw .box{background:#fff;border:2px solid var(--line);border-radius:26px;max-width:380px;width:100%;padding:26px 22px;text-align:center;box-shadow:0 14px 40px #7a5cd155}
+#pw .lock{font-size:46px;line-height:1}
+#pw h2{display:block;background:none;padding:0;margin:8px 0 4px;font-size:24px}
+#pw p{margin:4px 0;color:var(--muted)}
+#pw .price{font-size:34px;font-weight:600;color:var(--pink-d);margin:10px 0 2px}
+#pw .price s{font-size:16px;color:var(--muted);margin-right:6px}
+#pw .qr{width:150px;height:150px;margin:12px auto;border-radius:14px;border:2px dashed var(--lav);display:grid;place-items:center;font-size:13px;color:var(--lav-d);
+  background:repeating-conic-gradient(#3b3350 0 25%,#fff 0 50%) 0 0/20px 20px}
+#pw .qr span{background:#fff;padding:2px 8px;border-radius:8px}
+#pw button{font-family:inherit;font-size:17px;font-weight:600;color:#fff;background:var(--pink-d);border:0;border-radius:999px;padding:12px 34px;cursor:pointer;width:100%;transition:.15s}
+#pw button:hover{transform:translateY(-2px)}
+#pw button:disabled{background:#b9a3e6;cursor:wait;transform:none}
+#pw .sm{font-size:12px;margin-top:10px}
+body.pw-lock{overflow:hidden}
+</style>
+<div id="pw" role="dialog" aria-modal="true">
+  <div class="box">
+    <div class="lock" id="pwIcon">🔒</div>
+    <h2 id="pwTitle">อ่านต่อแบบพรีเมียม</h2>
+    <p id="pwText">เนื้อหาส่วนที่เหลือสงวนไว้สำหรับสมาชิก<br>ปลดล็อกเพื่อดูสรุปทั้งหมดตลอดชีพ</p>
+    <div class="price"><s>฿199</s>฿49</div>
+    <div class="qr" id="pwQr"><span>สแกนจ่าย</span></div>
+    <button id="pwBtn">💸 จ่ายเงินเพื่อดูต่อ</button>
+    <p class="sm">* ชำระครั้งเดียว ไม่มีรายเดือน</p>
+  </div>
+</div>
+<script>
+(function(){
+  var TRIGGER_PX = 1500;   // เลื่อนลงกี่ px ถึงจะเด้ง
+  var REVEAL     = false;  // true = ตอนจ่ายเสร็จบอกว่า "แกล้งเฉย ๆ"
+  var pw=document.getElementById('pw'), btn=document.getElementById('pwBtn'), done=false;
+  function onScroll(){
+    if(done) return;
+    if(window.scrollY > TRIGGER_PX){
+      pw.classList.add('show'); document.body.classList.add('pw-lock');
+      window.removeEventListener('scroll', onScroll);
+    }
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  btn.addEventListener('click', function(){
+    btn.disabled=true; btn.textContent='⏳ กำลังตรวจสอบการชำระเงิน...';
+    setTimeout(function(){
+      document.getElementById('pwIcon').textContent='✅';
+      document.getElementById('pwTitle').textContent='ชำระเงินสำเร็จ!';
+      document.getElementById('pwText').innerHTML = REVEAL ? 'จริง ๆ ฟรีนะ แกล้งเฉย ๆ 555 😆' : 'กำลังปลดล็อกเนื้อหา...';
+      document.getElementById('pwQr').style.display='none';
+      btn.style.display='none';
+      setTimeout(function(){
+        done=true; pw.classList.remove('show'); document.body.classList.remove('pw-lock');
+      }, REVEAL ? 2200 : 1200);
+    }, 2000);
+  });
+})();
+</script>
+<!-- ===== END PRANK PAYWALL ===== -->
 </body>
 </html>
